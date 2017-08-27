@@ -15,10 +15,10 @@ function! Preserve(command) " {{{
   let l = line(".")
   let c = col(".")
 
-  " Do the business:
+  " do the business:
   execute 'keepjumps ' . a:command
 
-  " Clean up: restore previous search history and cursor position
+  " clean up: restore previous search history and cursor position
   let @/=_s
   call cursor(l, c)
 endfunction
@@ -26,7 +26,7 @@ endfunction
 
 " setup plug {{{
 
-" If vim-plug is not installed, do this first
+" if vim-plug is not installed, do this first
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -35,41 +35,42 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" syntax
+" syntax {{{
 Plug 'jgdavey/vim-blockle'
 Plug 'scrooloose/syntastic'
 Plug 'ntpeters/vim-better-whitespace' " show whitespaces
-Plug 'kchmck/vim-coffee-script' " CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
-Plug 'tpope/vim-endwise' " that helps to end certain structures automatically.
-Plug 'tpope/vim-rails' " helper for rails ???????? can't use shortcuts
+Plug 'kchmck/vim-coffee-script' " coffeescript support to vim it covers syntax, indenting, compiling, and more
+Plug 'tpope/vim-endwise' " that helps to end certain structures automatically
+Plug 'tpope/vim-rails'
 Plug 'elixir-lang/vim-elixir' " helper for elixir
-Plug 'tpope/vim-bundler' " This is a lightweight bag of Vim goodies for Bundler
+Plug 'tpope/vim-bundler' " this is a lightweight bag of Vim goodies for bundler
 Plug 'skalnik/vim-vroom' " helper for ruby tests
 Plug 'thoughtbot/vim-rspec' " helper for ruby tests
-Plug 'elzr/vim-json' " better JSON for Vim
+Plug 'elzr/vim-json' " better json for vim
 Plug 'mustache/vim-mustache-handlebars' " plugin for working with mustache and handlebars templates
 Plug 'exu/pgsql.vim', { 'for': 'sql' } " postgresql syntax
 Plug 'heartsentwined/vim-emblem', { 'for': 'emblem' } " emblem syntax
 Plug 'MarcWeber/vim-addon-mw-utils' " interpret a file by function and cache file automatically
-Plug 'SirVer/ultisnips' " UltiSnips is the ultimate solution for snippets in Vim
+Plug 'SirVer/ultisnips' " ultisnips is the ultimate solution for snippets in Vim
 Plug 'honza/vim-snippets' " This repository contains snippets files for various programming languages
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } " a code-completion engine for vim
-
-" colorscheme & syntax highlighting
 Plug 'morhetz/gruvbox' " colorscheme
 Plug 'chriskempson/base16-vim' " another colorscheme
 Plug 'Yggdroot/indentLine'
+" }}}
 
-" git
+" git {{{
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+" }}}
 
-" file browsing
+" file browsing {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+" }}}
 
-" working with code
+" working with code {{{
 Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'SirVer/ultisnips'
 Plug 'easymotion/vim-easymotion' " better searching tool
@@ -78,8 +79,9 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+" }}}
 
-" utilities
+" utilities {{{
 " Plug 'terryma/vim-expand-region' " that allows you to visually select increasingly larger regions of text
 Plug 'tpope/vim-dispatch'
 Plug 'mattn/gist-vim' " vimscript for creating gists
@@ -93,11 +95,13 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'takac/vim-hardtime' " learn how to use vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" }}}
 
-" tmux
+" tmux {{{
 " Plug 'christoomey/vim-tmux-navigator' " navigate seamlessly between vim and tmux splits using a consistent set of hotkeys
 " Plug 'benmills/VIMux'
 " Plug 'edkolev/tmuxline.vim'
+" }}}
 
 call plug#end()
 " }}}
@@ -115,7 +119,7 @@ set ignorecase smartcase " ignore case when the pattern contains lowercase lette
 set listchars+=space:·,tab:▸\ ,eol:¬ " use the symbols for tabstops and EOLs
 set mouse= " disable mouse
 set mousehide " the mouse pointer is hidden when characters are typed
-set nohlsearch 
+set nohlsearch
 set number relativenumber " display line numbers
 set path+=** " search down into subfolders
 set scrolloff=3
@@ -165,7 +169,7 @@ nmap <silent> <leader>p :FZF<cr>
 nmap <silent> <leader>a :Ag<cr>
 " }}}
 
-" Close the current buffer and move to the previous one {{{
+" close the current buffer and move to the previous one {{{
 nmap <leader>bq :bp <BAR> bd #<CR>
 " }}}
 
@@ -240,29 +244,36 @@ let g:indentLine_enabled = 1
 " airline {{{
 set noshowmode " airline redundant
 let g:airline_powerline_fonts=1
+" }}}
 
-" show tabline
+" show tabline {{{
 let g:airline#extensions#tabline#enabled=1
-" show buffers
-let g:airline#extensions#tabline#show_buffers=1
+" }}}
 
-" hardtime
+" show buffers {{{
+let g:airline#extensions#tabline#show_buffers=1
+" }}}
+
+" hardtime {{{
 let g:hardtime_default_on = 1
 let g:hardtime_allow_different_key = 1 "  makes it possible to input 'jh', but not 'jj'
+" }}}
 
 " delimitMate {{{
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 2
 " }}}
 
-" rspec
+" rspec {{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+" }}}
 
-" highlight search
+" highlight search {{{
 nmap <silent> <leader>hl :set hlsearch!<cr>
+" }}}
 
 " folding {{{
 au FileType javascript,css,scss,json setlocal foldlevel=99
@@ -275,10 +286,11 @@ augroup fold_vimrc
 augroup END
 " }}}
 
-augroup reload_vimrc " {{
+augroup reload_vimrc " {{{
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }}}
+augroup END
+" }}}
 
 " return to last edit position when opening files {{{
 if has('autocmd')
