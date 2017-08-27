@@ -1,5 +1,8 @@
 # #!/bin/sh
 
+sudo apt-get install build-essential cmake
+sudo apt-get install python-dev python3-dev
+
 echo "`tput setaf 3``tput bold`Neovim installation has started`tput sgr0`"
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
