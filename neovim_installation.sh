@@ -1,15 +1,12 @@
 # #!/bin/sh
 
-echo "`tput setaf 3``tput bold`python-pip installation has started`tput sgr0`"
-sudo apt install python-pip
-echo "`tput setaf 2``tput bold`python-pip installation has finished`tput sgr0`"
-
 echo "`tput setaf 3``tput bold`Neovim installation has started`tput sgr0`"
-pip install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
 echo "`tput setaf 2``tput bold`Neovim installation has finished`tput sgr0`"
 
 echo "`tput setaf 3``tput bold`Fzf installation has started`tput sgr0`"
-pip install neovim
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 echo "`tput setaf 2``tput bold`Fzf installation has finished`tput sgr0`"
