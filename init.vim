@@ -165,7 +165,8 @@ nmap <leader>j :rightbelow new<CR>
 
 " search {{{
 nmap <silent> <leader>p :FZF<cr>
-nmap <silent> <leader>a :Ag<cr>
+nmap <silent> <leader>o :Ag<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignore files specified by .gitignore
 " }}}
 
 " close the current buffer and move to the previous one {{{
