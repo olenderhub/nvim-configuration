@@ -256,6 +256,7 @@ let g:airline#extensions#tabline#show_buffers=1
 
 " hardtime {{{
 let g:hardtime_default_on = 1
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_allow_different_key = 1 "  makes it possible to input 'jh', but not 'jj'
 " }}}
 
