@@ -130,8 +130,7 @@ set softtabstop=2 " makes the spaces feel like real tabs
 set tabstop=2 " number of space characters that will be inserted when the tab key is pressed
 set termguicolors
 set undofile
-set wildignore+=*/tmp/*,*/dist/*,*/node_modules/*,*/bower_components/*,*.so,*.swp,*.zip,*.jpg,*.bmp,*.gif,*.png,*.jpeg
-set wildignore+=.hg,.git,.svn
+set wildignore+=*/tmp/*,*/dist/*,*/node_modules/*,*/bower_components/*,*.so,*.swp,*.zip,*.jpg,*.bmp,*.gif,*.png,*.jpeg,.git,.svn
 set wildmode=list:longest,full
 set noswapfile
 " }}}
